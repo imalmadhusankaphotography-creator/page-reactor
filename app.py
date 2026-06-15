@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # 1. මෙතනට Graph API Explorer එකෙන් ගත්ත "Page Access Token" එක දාන්න
-PAGE_ACCESS_TOKEN = "ඔයාගේ_token_එක_මෙතනට_දාන්න"
+PAGE_ACCESS_TOKEN = "EAAci11igkXcBRtmySW9sDZCmi5mFtZACCAmqU4vPuOwL5kSTzgxDvLHNsxKax4eBqZCAfli6Ty7fG2psdWm1O2fMiZBNGKIiOMcoKxMGeZARQTMrQSkGLqfW5p235Sz0dw1WPb4puXjwWy1DtRs9vFZCpbcAPx59KSy8BAGAcYEZA2UlvY4rkOCWcES2LqFaPLaWQmAXPDwLOOnZAdwTYr8sZCv3HgZCZBGLlCL73tvZBIig5fcNTibZCKaP4o4JUo2D94ZCbFXpeM25OCxYT2BO0LoO6VbQZDZD"
 
 @app.route('/webhook', methods=['GET'])
 def verify():

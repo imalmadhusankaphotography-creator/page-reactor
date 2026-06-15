@@ -1,9 +1,11 @@
 from flask import Flask, request
 import requests
+import os
 
 app = Flask(__name__)
 
-PAGE_ACCESS_TOKEN = "EAAci11igkXcBRjaLPgz3iMdohFG3hss7gofQDYZAQC1xK0jVRpZAuodfVqxgjciTnXZAeNpvx3g3okkAp3GhxnEm9QdiHwIqECtaU05GqZBURugWmJ7JLoQfPEa9X62XR2inF10akmBQSOkFv3qulqQzM6UVB5blxpZAHbZBuLltF0DJ2C1oesJAJCnVieZBKXLiqh11XIRqvvjR777eGzr7V7LmXHnZBAK7LQFxLY2Ph2IDkwzBzHZCMRZA7uIfH2bYNVlRFtu6eEny0ZD"
+# 1. මෙතනට Graph API Explorer එකෙන් ගත්ත "Page Access Token" එක දාන්න
+PAGE_ACCESS_TOKEN = "ඔයාගේ_token_එක_මෙතනට_දාන්න"
 
 @app.route('/webhook', methods=['GET'])
 def verify():
@@ -24,6 +26,7 @@ def webhook():
     return 'OK', 200
 
 def react(comment_id):
+    # 2. මෙතන v19.0 වෙනුවට ඔයාගේ v25.0 එක දැම්මා
     url = f"https://graph.facebook.com/v25.0/{comment_id}/reactions"
     params = {
         'type': 'LOVE',
@@ -31,5 +34,7 @@ def react(comment_id):
     }
     requests.post(url, params=params)
 
+# 3. Render එකට ගැලපෙන විදිහට Port එක හරියටම මෙතනටයි දාන්න ඕනේ:
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)

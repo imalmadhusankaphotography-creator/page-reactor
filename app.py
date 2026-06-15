@@ -24,7 +24,7 @@ def webhook():
     return 'OK', 200
 
 def react(comment_id):
-    url = f"https://graph.facebook.com/v19.0/{comment_id}/reactions"
+    url = f"https://graph.facebook.com/v25.0/{comment_id}/reactions"
     params = {
         'type': 'LOVE',
         'access_token': PAGE_ACCESS_TOKEN
